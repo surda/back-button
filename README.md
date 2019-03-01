@@ -26,7 +26,9 @@ Default
 ```yaml
 backButton:
     defaultPresenterLink: 'default'
-    template: 'bootstrap4.latte'
+    templates:
+        default: bootstrap4.default.latte
+        secondary: bootstrap4.secondary.latte
 ```
 
 List of all configuration options:
@@ -39,6 +41,8 @@ backButton:
     # or
     templates:
         default: path/to/your/latte/file.latte
+        foo: path/to/your/latte/foo.latte
+        ...
 ```
 
 ## Usage
