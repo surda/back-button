@@ -1,0 +1,11 @@
+<div class="btn-group">
+    {if $destination === NULL}
+        <a href="{plink $presenterLink, 'destination' => NULL}" class="btn btn-secondary">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
+    {else}
+        <a href="{$destination}" class="btn btn-secondary">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
+    {/if}
+</div>
