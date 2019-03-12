@@ -2,7 +2,7 @@
 
 namespace Surda\BackButton;
 
-trait BackButton
+trait TBackButton
 {
     /** @var BackButtonFactory @inject */
     public $backButtonFactory;

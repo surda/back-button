@@ -50,9 +50,12 @@ backButton:
 ### Presenter
 
 ```php
+use Nette\Application\UI\Presenter;
+use Surda\BackButton\TBackButton;
+
 abstract class ProductPresenter extends Presenter
 {
-    use BackButton;
+    use TBackButton;
 }
 ```
 
