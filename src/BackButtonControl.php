@@ -3,11 +3,11 @@
 namespace Surda\BackButton;
 
 use Nette\Application\UI;
-use Surda\ComponentHelpers\Traits\Themeable;
+use Surda\UI\Control\ThemeableControls;
 
 class BackButtonControl extends UI\Control
 {
-    use Themeable;
+    use ThemeableControls;
 
     /** @var string|null */
     protected $destination;
