@@ -5,8 +5,12 @@ namespace Surda\BackButton\DI;
 use Nette\DI\CompilerExtension;
 use Nette\Schema\Expect;
 use Nette\Schema\Schema;
+use stdClass;
 use Surda\BackButton\BackButtonFactory;
 
+/**
+ * @property-read stdClass $config
+ */
 class BackButtonExtension extends CompilerExtension
 {
     /** @var array */
