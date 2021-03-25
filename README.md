@@ -51,11 +51,11 @@ backButton:
 
 ```php
 use Nette\Application\UI\Presenter;
-use Surda\BackButton\TBackButton;
+use Surda\BackButton\InjectBackButton;
 
 abstract class ProductPresenter extends Presenter
 {
-    use TBackButton;
+    use InjectBackButton;
 }
 ```
 
@@ -71,6 +71,20 @@ Destination page (Product:detail) add component to detail.latte
 
 ```html
 {control backButton}
+```
+
+### Destination
+
+Presenter
+
+```php
+$this->template->destination = $this->link('detail', $id);
+```
+
+Latte
+
+```html
+{control backButton destination:$destination}
 ```
 
 ### Select control template file

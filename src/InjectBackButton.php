@@ -2,21 +2,20 @@
 
 namespace Surda\BackButton;
 
-/**
- * @deprecated use Surda\BackButton\InjectBackButton
- */
-trait TBackButton
+trait InjectBackButton
 {
-    /** @var BackButtonFactory @inject */
-    public $backButtonFactory;
+    private BackButtonFactory $backButtonFactory;
 
-    /** @var string $destination @persistent */
-    public $destination;
+    /** @persistent */
+    public ?string $destination = null;
 
-    public function injectBackButton(): void
+    public function injectBackButton(BackButtonFactory $backButtonFactory): void
     {
+        $this->backButtonFactory = $backButtonFactory;
+
         $this->onStartup[] = function () {
             $this->template->currentLink = $this->link('this');
+            $this->template->destination = null;
 
             $resetPersistentParameters = [
                 'destination' => NULL,
@@ -34,9 +33,6 @@ trait TBackButton
         };
     }
 
-    /**
-     * @return BackButtonControl
-     */
     protected function createComponentBackButton(): BackButtonControl
     {
         return $this->backButtonFactory->create();

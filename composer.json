@@ -17,7 +17,7 @@
         "issues": "https://github.com/surda/back-button/issues"
     },
     "require": {
-        "php": ">=7.1,<8.0",
+        "php": ">=8.0",
         "nette/di": "^3.0",
         "surda/themeable-controls": "^1.0"
     },

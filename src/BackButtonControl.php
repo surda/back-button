@@ -2,44 +2,32 @@
 
 namespace Surda\BackButton;
 
-use Nette\Application\UI;
+use Nette\Application\UI\Control;
+use Nette\Application\UI\Template;
 use Surda\UI\Control\ThemeableControls;
 
-class BackButtonControl extends UI\Control
+class BackButtonControl extends Control
 {
     use ThemeableControls;
 
-    /** @var string|null */
-    protected $destination;
+    protected ?string $destination = null;
+    protected string $defaultPresenterLink = 'default';
+    protected ?string $presenterLink = null;
+    protected bool $useAjax = FALSE;
 
-    /** @var string */
-    protected $defaultPresenterLink;
-
-    /** @var string */
-    protected $presenterLink;
-
-    /** @var bool */
-    protected $useAjax = FALSE;
-
-    /**
-     * @param string $templateType
-     */
-    public function render(string $templateType = 'default'): void
+    public function render(string $templateType = 'default', ?string $destination = null): void
     {
-        /** @var \Nette\Application\UI\ITemplate $template */
+        /** @var Template $template */
         $template = $this->template;
         $template->setFile($this->getTemplateByType($templateType));
 
-        $template->destination = $this->destination;
+        $template->destination = $destination !== null ? $destination : $this->destination;
         $template->presenterLink = $this->getPresenterLink();
         $template->userAjax = $this->useAjax;
 
         $template->render();
     }
 
-    /**
-     * @return string
-     */
     public function getPresenterLink(): string
     {
         if ($this->presenterLink === NULL) {
@@ -49,33 +37,21 @@ class BackButtonControl extends UI\Control
         return $this->presenterLink;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDestination(): ?string
     {
         return $this->destination;
     }
 
-    /**
-     * @param string|null $destination
-     */
     public function setDestination(?string $destination): void
     {
         $this->destination = $destination;
     }
 
-    /**
-     * @param string $presenterLink
-     */
     public function setDefaultPresenterLink(string $presenterLink): void
     {
         $this->defaultPresenterLink = $presenterLink;
     }
 
-    /**
-     * @param string $presenterLink
-     */
     public function setPresenterLink(string $presenterLink): void
     {
         $this->presenterLink = $presenterLink;
